@@ -61,13 +61,8 @@ trusted person.
 ## Team members responsibilities
 
 ### QUAN
-Of course! Here is the project task schedule formatted using a GitHub-style markdown table structure, divided into four main phases.
 
 ---
-
-# 🤖 Smart Doorbell (ESP32S3/RPi + tinyML) Project Task Schedule
-
-This schedule outlines the key steps to build an intelligent, edge-computing smart doorbell capable of real-time object detection using tinyML.
 
 ## Phase 1: 🛠️ Hardware & Environment Setup
 
