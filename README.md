@@ -1,132 +1,125 @@
-# ECE635-Home safety system using LLM Agents
+# ECE635-Smart Doorbell using ESP32S3/Raspberry Pi and tinyML
 
 ## Introduction
-Large Language Models (LLMs) have become extremely popular due to their reasoning capabilities. LLM agents are autonomous systems that combine the power of standalone LLMs and tools such as search, weather, calculator, etc to handle more complex tasks and queries.
+This project focuses on building a Smart Doorbell that leverages edge computing and tinyML principles. The core goal is to create a secure and private home application that can identify visitors locally on a low-power, resource-constrained device like a Raspberry Pi or ESP32-S3 with a camera.
 ## Goal
-Use LLM agents to design a home safety system.
+Use tinyML to design a Smart Doorbell system with utral tiny model and lowest power consumption.
 ## Deliverables:
-◦ Understand LLM agents. (tutorial provided)
- 
-◦ Implement basic LLM agents using the tutorials.
+### 1. FUNCTIONAL_EDGE_SYSTEM (Core Product)
+# Core deliverable is the operational smart doorbell unit.
+README.md: "The Raspberry Pi/ESP32-S3 will run an optimized TFLite model to perform low-latency face/person classification, distinguishing between known and unknown visitors."
 
-◦ Use LLM agents to design a home safety system. It could be anything. E.g., intruder detection, smoke/fire in the kitchen, stray animal detection etc. Be creative. The point here is that you should let the LLM do the reasoning and designing of the system. You should just equip the LLM with the necessary tools to be able to reason. The references and tutorials will help you build such a system.
+### 2. CODE_AND_DOCUMENTATION
+All source code, training assets, and guides.
+/src/
+    main.py: "Edge deployment code to run system logic and perform TFLite inference."
+/model_training/
+    train_model.ipynb: "Training scripts used for data preparation, model training, and conversion to TFLite format."
+/docs/
+    SETUP_GUIDE.md: "Detailed instructions on hardware wiring, OS configuration, and software environment setup."
+    MODEL_OPTIMIZATION.md: "Guide detailing quantization and optimization steps for efficient edge deployment."
+/repo_root/
+    .gitattributes: "A complete GitHub repository will be provided, containing the model training scripts, edge deployment code, and detailed setup/operation guides."
 
-◦ The final output of the LLM should be some code snippet. E.g., in the case of fire detection, it should output code to train some object detection model on kitchen fire images.
+### 3. PERFORMANCE_DEMONSTRATION
+Verification and proof of concept.
+/demo/
+    demo_video.mp4: "A video demonstration will be delivered, showcasing the system's real-time inference on the edge device."
+    PERFORMANCE_LOG.txt: "Recorded and reported data on the model's performance, including inference time (latency) and memory usage."
+
+### 4. OPTIONAL_FEATURES
+Advanced features, if implemented.
+/src/notification_module.py: "Code enabling the system to trigger mobile notifications based on classification results."
+/model_training/delivery_person_dataset/: "If implemented, the system will be able to trigger mobile notifications based
 
 ## Motivation
-With the rapid advancement of technology and the widespread adoption of IoT devices, smart homes are becoming more common. However, home security remains a critical concern. Risks such as fires, intrusions, and other emergencies continue to pose threats to homeowners. There is a strong need for an integrated home safety system that can actively monitor and provide real-time alerts to enhance home security.
+1. Enhanced Functionality and Security
+Smarter Detection: Go beyond simply detecting motion or a button press. By using tinyML (Machine Learning on small devices), the doorbell can perform real-time object recognition (e.g., detecting a person vs. a car vs. a falling leaf) or facial recognition right at the door.
 
-The integration of Large Language Models (LLM) as intelligent agents in a home safety system offers a promising solution. LLM agents possess powerful natural language processing and data analysis capabilities, enabling them to understand and respond to data from multiple sensors and devices. This can significantly improve the accuracy and efficiency of home security systems by detecting threats such as fires, intrusions, and other emergencies in real time.
+Prevent False Alarms: Advanced detection reduces annoying notifications caused by pets or shadows, only alerting the user to truly relevant events.
 
-Key motivations for developing this system include:
+2. Overcoming Traditional Smart Doorbell Limitations
+Speed (Low Latency): Traditional smart doorbells send video to the cloud for analysis, which causes a delay. Running the AI model locally on the ESP32S3 (at the "edge") allows for instantaneous analysis and alerts—a critical feature for security.
 
-### 1. Enhanced Intelligence and Automation
-Traditional systems often rely on basic sensors, which may only detect specific types of threats. LLM agents can analyze and interpret data from multiple sources, reducing false alarms and offering more intelligent, automated responses to various security risks.
+Privacy: Processing images and video on the device means sensitive data isn't constantly streamed to and stored on a company's cloud server, significantly improving user privacy.
 
-### 2. Improved Real-Time Risk Detection
-LLM agents can monitor a wide range of risks, such as smoke, gas leaks, and break-ins. By processing sensor data and identifying patterns, the system can provide accurate alerts and learn from past events to continually improve its risk detection.
+3. Leveraging Edge Technology
+Low Power Consumption: tinyML models are extremely efficient. This makes the project ideal for a battery-powered device like a doorbell, allowing it to be "always-on" while minimizing battery drain—especially important for the power-constrained ESP32S3.
 
-### 3. Convenience through Natural Language Interaction
-Users can interact with the system via voice or mobile apps. In case of an emergency, the system will send alerts through various communication channels (e.g., SMS, calls), providing clear guidance on what actions to take.
-
-### 4. Integration of External Information for Comprehensive Protection
-The system can incorporate external data sources, such as local weather updates, fire warnings, and law enforcement alerts, to provide a broader security perspective and better anticipate potential threats.
-
-### 5. Cost Reduction and Accessibility
-By leveraging LLM technology, the system can be built on existing IoT infrastructure, reducing the need for expensive hardware. This makes advanced home security more affordable and accessible to a wider audience.
-
+Cost-Effectiveness: Building the solution with low-cost, widely available hardware like the ESP32S3 or Raspberry Pi allows for a powerful, customized smart home solution at a much lower cost than commercial high-end smart doorbells.
 ## System Blocks
 
 <img src="https://github.com/Zachay-NAU/ECE635/blob/main/ECE635_1.png" width="700">
 
 ## hw/sw requirements
 
-### 1. Grove - Temperature, Humidity, Pressure and Gas Sensor for Arduino - BME680
-<div class="get_one_now_container" style={{textAlign: 'center'}}>
-    <a class="get_one_now_item" href="https://www.seeedstudio.com/Grove-Temperature-Humidity-Pressure-and-Gas-Sensor-for-Arduino-BME680.html">
-            <strong><span><font color={'FFFFFF'} size={"4"}> Get One Now 🖱️</font></span></strong>
-    </a>
-</div>
-
-### 2. SenseCAP Watcher
-<div class="get_one_now_container" style={{textAlign: 'center'}}>
-    <a class="get_one_now_item" href="https://www.kickstarter.com/projects/seeed/sensecap-watcher-open-source-ai-assistant-for-smarter-spaces">
-            <strong><span><font color={'FFFFFF'} size={"4"}> Get One Now 🖱️</font></span></strong>
-    </a>
-</div>
-
-### 3. reRouter CM4 1432
-<div class="get_one_now_container" style={{textAlign: 'center'}}>
-    <a class="get_one_now_item" href="https://www.seeedstudio.com/Dual-GbE-Carrier-Board-with-4GB-RAM-32GB-eMMC-RPi-CM4-Case-p-5029.html">
-            <strong><span><font color={'FFFFFF'} size={"4"}> Get One Now 🖱️</font></span></strong>
-    </a>
-</div>
-
-### 4. LLAMA3.1+ 
-<div class="get_one_now_container" style={{textAlign: 'center'}}>
-    <a class="get_one_now_item" href="https://docs.lambdalabs.com/1-click-clusters/serving-llama-3.1-405b-on-a-lambda-1-click-cluster?matchtype=e&adgroup=162515651422&feeditemid=&loc_interest_ms=&loc_physical_ms=9001766&network=g&device=c&devicemodel=&adposition=&utm_source=google&utm_campaign=Google_Search_Generic_Llama3&utm_medium=search&utm_term=llama%203.1&utm_content=706989977266&hsa_acc=1731978716&hsa_cam=21496622297&hsa_grp=162515651422&hsa_ad=706989977266&hsa_src=g&hsa_tgt=kwd-2329170072955&hsa_kw=llama%203.1&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gad_source=1&gclid=Cj0KCQjwu-63BhC9ARIsAMMTLXT6HO8VwrXo2Rgl7dFi_R6e2AlSGi5UWPVgWcofr_SrPLbeqPpL8pIaAuOnEALw_wcB">
-            <strong><span><font color={'FFFFFF'} size={"4"}> Click here 🖱</font></span></strong>
-    </a>
-</div>
-
+Hardware/Software: Raspberry Pi, camera module. For training, Google Colab can be used. You
+can use any model for face detection. There are various approaches. One simple way is to compute
+embeddings of known/trusted people using a CNN and store them. When a person approaches the
+door, compare their embedding with known embeddings. If the embeddings match, you know it is a
+trusted person.
 ## Team members responsibilities
 
 ### QUAN
+Of course! Here is the project task schedule formatted using a GitHub-style markdown table structure, divided into four main phases.
 
-1. LLM Model Integration
+---
 
-Research and integrate suitable Large Language Models (LLMs) for the system, ensuring compatibility with home security tasks.
-Fine-tune the LLM to process sensor data, identify anomalies, and generate appropriate alerts.
+# 🤖 Smart Doorbell (ESP32S3/RPi + tinyML) Project Task Schedule
 
-2. Data Processing & Sensor Integration
+This schedule outlines the key steps to build an intelligent, edge-computing smart doorbell capable of real-time object detection using tinyML.
 
-Develop or integrate modules to collect and process data from various sensors (e.g., smoke detectors, motion sensors, cameras).
-Write algorithms to process sensor data and identify potential security risks (e.g., fire detection, intrusion detection).
+## Phase 1: 🛠️ Hardware & Environment Setup
 
-3. Alert Mechanism Development
+| ID | Task Description | Platform Focus | Status |
+| :--- | :--- | :--- | :--- |
+| **1.1** | **Finalize Platform Selection:** Commit to either **ESP32S3** (low-power, simple) or **Raspberry Pi** (high-power, complex features). | Hardware | ⬜ To Do |
+| **1.2** | **Procurement:** Order main board, **Camera Module** (e.g., OV2640/RPi Camera), push button, microphone, and power components/battery. | Procurement | ⬜ To Do |
+| **1.3** | **Base OS/Firmware Setup:** Install the necessary OS (RPi) or flash the base **Wi-Fi-enabled firmware** (ESP32S3). | Software/OS | ⬜ To Do |
+| **1.4** | **Initial Hardware Test:** Verify that the camera, button, and basic network connectivity are functional. | Hardware | ⬜ To Do |
 
-Create systems for sending real-time alerts via SMS, email, phone notifications, or other channels.
-Implement natural language response generation for user queries about home security status (e.g., "Is there any fire risk?").
+---
 
-4. AI Learning & Optimization
+## Phase 2: 🧠 tinyML Model Development
 
-Implement a feedback loop for continuous learning from user input and event data.
-Optimize the LLM-based system over time to reduce false alarms and improve threat prediction.
+| ID | Task Description | Tools/Methods | Status |
+| :--- | :--- | :--- | :--- |
+| **2.1** | **Data Collection:** Collect and label a diverse dataset of images/video of target objects (**Person, Package, Animal**) and negative examples (**Background**). | Camera Stream, Mobile App | ⬜ To Do |
+| **2.2** | **Feature Engineering:** Preprocess data (e.g., image resizing, color space conversion) and prepare features using an ML platform (e.g., **Edge Impulse**). | Cloud/Local Tools | ⬜ To Do |
+| **2.3** | **Model Training:** Design and train a lightweight visual model (e.g., a small CNN or **FOMO** for object detection). | TensorFlow Lite, Keras | ⬜ To Do |
+| **2.4** | **Optimization & Quantization:** Apply **8-bit quantization** to the model to reduce its size and computational requirements for the target hardware. | TensorFlow Lite Micro | ⬜ To Do |
+| **2.5** | **Model Testing:** Evaluate the optimized model's **accuracy and latency** using a validation dataset. | Testing Tools | ⬜ To Do |
 
-5. System Architecture Design
+---
 
-Design the overall software architecture for integrating LLM agents with IoT devices, cloud services, and communication interfaces.
-Ensure the system can scale and integrate external data sources (e.g., weather updates, fire alerts from authorities).
+## Phase 3: 💻 Edge Deployment & Integration
+
+| ID | Task Description | Integration Point | Status |
+| :--- | :--- | :--- | :--- |
+| **3.1** | **Model Deployment:** Export the tinyML model as a **C/C++ library** and integrate it into the microcontroller firmware/application. | TFLite Micro | ⬜ To Do |
+| **3.2** | **Inference Integration:** Write code to capture an image from the camera and feed it directly to the local ML model for **real-time inference**. | Camera/Model API | ⬜ To Do |
+| **3.3** | **Event Trigger Logic:** Implement the logic to wake the device (from deep sleep for ESP32S3) upon button press or motion sensor activation, triggering the inference step (3.2). | GPIO/Interrupts | ⬜ To Do |
+| **3.4** | **Notification Service:** Implement the network communication (e.g., **MQTT, Webhook, Telegram API**) to send an alert (with the snapshot) only when the model confirms a valid detection (e.g., "Person Detected"). | Wi-Fi/Cloud API | ⬜ To Do |
+
+---
+
+## Phase 4: ✅ Testing & Finalization
+
+| ID | Task Description | Goal/Metric | Status |
+| :--- | :--- | :--- | :--- |
+| **4.1** | **Functional Testing:** Verify that all components (button, camera, inference, notification) work together reliably in a full cycle. | **Zero Fatal Errors** | ⬜ To Do |
+| **4.2** | **Performance Check:** Measure the total inference time and the rate of **False Positives** (should be minimized). | Latency & Accuracy | ⬜ To Do |
+| **4.3** | **Power Consumption Check:** (ESP32S3 only) Measure the deep sleep current and active current to estimate **battery life**. | Low-Power Target | ⬜ To Do |
+| **4.4** | **Enclosure & Installation:** Design/3D print a weather-resistant casing and mount the device at the desired location. | Durability | ⬜ To Do |
+
+---
+
+### QUAN'S CAT--SUN
+
+Cause Troubles
+![bf2069c4019aa771a5fabd3feed1d9ab](https://github.com/user-attachments/assets/c301493e-86f7-4b8f-b4a1-f3cb5c51f381)
 
 
-
-### Shuai
-
-1. IoT Device Integration & Setup
-
-Research and select appropriate IoT devices (sensors, cameras, smoke detectors) for home security.
-Handle the physical installation and setup of these devices in a test environment or simulated home.
-Write code to communicate with these IoT devices and relay data to the LLM system.
-
-2. Frontend Development & User Interface
-
-Develop a user-friendly interface (web or mobile app) for users to monitor home security status in real-time.
-Design and implement interactive features like viewing sensor data, receiving alerts, and managing settings (e.g., enable/disable notifications).
-
-3. Backend Development
-
-Develop a robust backend to manage sensor data storage, user management, and integration with external services (e.g., cloud databases, push notification services).
-Ensure secure communication between devices, servers, and users, implementing encryption and authentication protocols.
-
-4. System Testing & Debugging
-
-Perform extensive testing of the IoT devices, ensuring they properly interact with the LLM and alert system.
-Troubleshoot hardware and software issues, ensuring the system works reliably under different conditions.
-
-5. Maintenance & Security
-
-Regularly update the system’s software and firmware for both the frontend and IoT devices.
-Implement security best practices to protect user data and ensure the system is resilient to hacking attempts or system breaches.
 
 ## Project timeline
 
