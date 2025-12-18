@@ -11,7 +11,27 @@ A privacy-centric, ultra-low-power smart doorbell solution powered by Edge Compu
 
 ---
 
-## Contents in this Git
+## 📂 Repository Structure (Deliverables)
+
+```text
+/repo_root/
+├── ESP32S3Code/
+│   ├── sleepand wakeup.ino                                               # PIR Wake-up Sample Code
+│   └── classification.ino                                                # Facial Recognition Example Code
+│   └── ultralowpowerclassification.ino                                   #Full Integrated Project Code
+│   └── lib/ei-smart-doorbell(new)--facial-recognition-arduino-1.0.6.zip  #TinyML Library Dependencies
+├── Model_training/
+│   ├── ei-smart-doorbell(new)--facial-recognition-arduino-1.0.8          # Quantized Model (typically Int8 Model)
+│   └── ei-smart-doorbell(new)--facial-recognition-arduino-1.0.9          # Unquantized Model (typically Float32 Model)
+│   └── smart-doorbell(new)-facial-recognition-export.zip                 # (Optional) Sample datasets
+├── Doc/
+│   ├── Course Report.pdf                                                 # Final Project Report
+│   └── Presentation_Smarter Doorbell ESP32S3.pptx                        # Project Presentation PPT
+├── 3D/
+│   ├── SB_TOP.stl                                                        # Top Enclosure
+│   └── SB_Bottom.stl                                                     # Bottom Enclosure
+└── README.md                                                             # Project documentation
+```
 Trained Model on Edge Impulse:
 Extral Libiraris for XIAO ESP32S3:
 Arduino Code for XIAO ESP32SE:
@@ -51,24 +71,6 @@ This project implements a **local facial recognition system** on a resource-cons
 
 ---
 
-## 📂 Repository Structure (Deliverables)
-
-```text
-/repo_root/
-├── src/
-│   ├── main.cpp                 # Edge deployment code (Logic & TFLite inference)
-│   └── notification_module.py   # (Optional) Notification triggers
-├── model_training/
-│   ├── train_model.ipynb        # Data prep, training, and conversion scripts
-│   └── dataset/                 # (Optional) Sample datasets
-├── docs/
-│   ├── SETUP_GUIDE.md           # Hardware wiring & OS configuration
-│   └── MODEL_OPTIMIZATION.md    # Quantization guide for edge deployment
-├── demo/
-│   ├── demo_video.mp4           # Real-time inference demonstration
-│   └── PERFORMANCE_LOG.txt      # Latency and memory usage metrics
-└── README.md                    # Project documentation
-```
 ## 🛠️ Hardware & Tech Stack
 
 ### Bill of Materials (BOM)
