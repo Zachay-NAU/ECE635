@@ -32,10 +32,6 @@ A privacy-centric, ultra-low-power smart doorbell solution powered by Edge Compu
 │   └── SB_Bottom.stl                                                     # Bottom Enclosure
 └── README.md                                                             # Project documentation
 ```
-Trained Model on Edge Impulse:
-Extral Libiraris for XIAO ESP32S3:
-Arduino Code for XIAO ESP32SE:
-3D Printed Files:
 
 ## 📖 Introduction & Motivation
 
