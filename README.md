@@ -53,7 +53,7 @@ This project implements a **local facial recognition system** on a resource-cons
 ## 🏗️ System Architecture
 
 ### Hardware Block Diagram
-<img src="https://github.com/Zachay-NAU/ECE635/blob/main/ECE635_1.png" width="700" alt="System Block Diagram">
+<img src="https://github.com/Zachay-NAU/ECE635/blob/main/Doc/ECE635_1.png" width="700" alt="System Block Diagram">
 
 ### The Pipeline
 1.  **Idle:** System stays in Deep Sleep to conserve power.
