@@ -14,7 +14,7 @@ A privacy-centric, ultra-low-power smart doorbell solution powered by Edge Compu
 ## 📂 Repository Structure (Deliverables)
 
 ```text
-/repo_root/
+/main/
 ├── ESP32S3Code/
 │   ├── sleepand wakeup.ino                                               # PIR Wake-up Sample Code
 │   └── classification.ino                                                # Facial Recognition Example Code
